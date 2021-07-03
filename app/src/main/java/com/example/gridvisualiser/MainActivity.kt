@@ -53,10 +53,10 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 }
 
                 btnSolve.isEnabled = true
-                btnSolve.setBackgroundColor(Color.parseColor("#FFFFFF"))
+                btnSolve.setBackgroundResource(R.drawable.rounded_border_black)//==(Color.parseColor("#FFFFFF"))
                 btnSolve.setTextColor(Color.parseColor("#FFFFFF"))
                 btnReset.isEnabled = true
-                btnReset.setBackgroundColor(Color.parseColor("#FFFFFF"))
+                btnReset.setBackgroundResource(R.drawable.rounded_border_black)
             }
         }
 

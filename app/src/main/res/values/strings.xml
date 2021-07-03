@@ -1,15 +1,15 @@
 <resources>
-    <string name="app_name">Pathfinding Visualizer</string>
+    <string name="app_name">Grid Visualizer</string>
     <string name="solveBfs">BFS</string>
     <string name="solveDfs">DFS</string>
-    <string name="reset">RESET</string>
+    <string name="reset">Reset</string>
     <string name="speed">Speed : </string>
-    <string name="algorithm">Algorithm :</string>
-    <string name="solve">SOLVE</string>
+    <string name="algorithm">Visualize :</string>
+    <string name="solve">Start</string>
 
     <string-array name="speed_array">
         <item>Fast</item>
-        <item>Avg.</item>
+        <item>Avg</item>
         <item>Slow</item>
     </string-array>
 
