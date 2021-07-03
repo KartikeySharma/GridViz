@@ -111,36 +111,28 @@
 
     <Button
         android:id="@+id/btn_solve"
-        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/open_sans_light"
         android:text="@string/solve"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-        android:textColor="@drawable/button_text_color"
+        android:background="@drawable/rounded_border_black"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pathGrid"
-        app:rippleColor="#FFECB3"
-        app:strokeColor="#6E6E6E"
         custom:layout_constraintBottom_toBottomOf="parent" />
 
     <Button
         android:id="@+id/btn_reset"
-        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/open_sans_light"
         android:text="@string/reset"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-        android:textColor="@drawable/button_text_color"
+        android:background="@drawable/rounded_border_black"
         android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/btn_solve"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:rippleColor="#FFECB3"
-        app:strokeColor="#6E6E6E" />
+        app:layout_constraintStart_toStartOf="@+id/guideline3" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"

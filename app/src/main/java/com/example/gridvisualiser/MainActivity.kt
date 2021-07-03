@@ -33,27 +33,19 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         btnSolve.setOnClickListener {
 
-            // setting solving status to true , so that
-            // user can't manipulate the gird while operations
             pathGrid.setSolving(true)
 
-            //Since UI needs to be updated and work is less,
-            //performing the operation in Main Thread
             GlobalScope.launch(Dispatchers.Main) {
 
                 btnSolve.isEnabled = false
-                btnSolve.setBackgroundColor(Color.parseColor("#DFBF9C"))
-                btnSolve.setTextColor(Color.parseColor("#000000"))
-
                 btnReset.isEnabled = false
-                btnReset.setBackgroundColor(Color.parseColor("#9D9FA2"))
+                btnSolve.setTextColor(Color.parseColor("#000000"))
 
                 when (algorithmToApply) {
                     BFS_ALGO -> {
                         val found = finder.solveBFS(speed)
                         makeToast(found)
                     }
-
                     else -> {
                         val found = finder.solveDFS(speed)
                         makeToast(found)
@@ -61,10 +53,10 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 }
 
                 btnSolve.isEnabled = true
-                btnSolve.setBackgroundColor(Color.parseColor("#333333"))
+                btnSolve.setBackgroundColor(Color.parseColor("#FFFFFF"))
                 btnSolve.setTextColor(Color.parseColor("#FFFFFF"))
                 btnReset.isEnabled = true
-                btnReset.setBackgroundColor(Color.parseColor("#333333"))
+                btnReset.setBackgroundColor(Color.parseColor("#FFFFFF"))
             }
         }
 
@@ -73,17 +65,16 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             finder.resetGrid()
             pathGrid.invalidate()
         }
-
     }
 
     private fun makeToast(found: Boolean) {
         if (found) {
             val toast = Toast.makeText(this@MainActivity, "Path Found.", Toast.LENGTH_SHORT)
-            toast.setGravity(Gravity.BOTTOM, 0, -200)
+            //toast.setGravity(Gravity.BOTTOM, 0, -200)
             toast.show()
         } else {
             val toast = Toast.makeText(this@MainActivity, "No Path Found.", Toast.LENGTH_SHORT)
-            toast.setGravity(Gravity.BOTTOM, 0, -200)
+            //toast.setGravity(Gravity.BOTTOM, 0, -200)
             toast.show()
         }
     }
