@@ -6,8 +6,8 @@ import android.view.Gravity
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.example.gridvisualiser.UI.PathGrid
-import com.example.gridvisualiser.pathFinder.PathFinder
+import com.example.gridvisualiser.ui.PathGrid
+import com.example.gridvisualiser.model.PathFinder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

@@ -1,4 +1,4 @@
-package com.example.gridvisualiser.UI
+package com.example.gridvisualiser.ui
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -10,14 +10,14 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import com.example.gridvisualiser.R
-import com.example.gridvisualiser.pathFinder.PathFinder
-import com.example.gridvisualiser.pathFinder.PathFinder.Companion.EMPTY_CELL_CODE
-import com.example.gridvisualiser.pathFinder.PathFinder.Companion.END_CELL_CODE
-import com.example.gridvisualiser.pathFinder.PathFinder.Companion.EXPLORE_CELL_CODE
-import com.example.gridvisualiser.pathFinder.PathFinder.Companion.EXPLORE_HEAD_CELL_CODE
-import com.example.gridvisualiser.pathFinder.PathFinder.Companion.FINAL_PATH_CELL_CODE
-import com.example.gridvisualiser.pathFinder.PathFinder.Companion.OBSTACLE_CELL_CODE
-import com.example.gridvisualiser.pathFinder.PathFinder.Companion.START_CELL_CODE
+import com.example.gridvisualiser.model.PathFinder
+import com.example.gridvisualiser.model.PathFinder.Companion.EMPTY_CELL_CODE
+import com.example.gridvisualiser.model.PathFinder.Companion.END_CELL_CODE
+import com.example.gridvisualiser.model.PathFinder.Companion.EXPLORE_CELL_CODE
+import com.example.gridvisualiser.model.PathFinder.Companion.EXPLORE_HEAD_CELL_CODE
+import com.example.gridvisualiser.model.PathFinder.Companion.FINAL_PATH_CELL_CODE
+import com.example.gridvisualiser.model.PathFinder.Companion.OBSTACLE_CELL_CODE
+import com.example.gridvisualiser.model.PathFinder.Companion.START_CELL_CODE
 import kotlin.math.abs
 import kotlin.math.ceil
 import kotlin.math.min

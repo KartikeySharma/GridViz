@@ -1,4 +1,4 @@
-package com.example.gridvisualiser.pathFinder
+package com.example.gridvisualiser.model
 
 import BFS
 import DFS

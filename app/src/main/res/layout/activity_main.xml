@@ -91,7 +91,7 @@
     </LinearLayout>
 
 
-    <com.example.gridvisualiser.UI.PathGrid
+    <com.example.gridvisualiser.ui.PathGrid
         android:id="@+id/pathGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-import com.example.gridvisualiser.pathFinder.PathFinder
+import com.example.gridvisualiser.model.PathFinder
 import kotlinx.coroutines.delay
 
 class DFS(rows: Int, cols: Int) {
