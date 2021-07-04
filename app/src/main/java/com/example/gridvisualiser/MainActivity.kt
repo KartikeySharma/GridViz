@@ -72,7 +72,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
 
         btnExit.setOnClickListener {
-            //finder.resetGrid()
             finish()
         }
     }
@@ -80,11 +79,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private fun makeToast(found: Boolean) {
         if (found) {
             val toast = Toast.makeText(this@MainActivity, "Path Found.", Toast.LENGTH_SHORT)
-            //toast.setGravity(Gravity.BOTTOM, 0, -200)
             toast.show()
         } else {
             val toast = Toast.makeText(this@MainActivity, "No Path Found.", Toast.LENGTH_SHORT)
-            //toast.setGravity(Gravity.BOTTOM, 0, -200)
             toast.show()
         }
     }
