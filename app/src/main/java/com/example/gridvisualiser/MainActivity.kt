@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         val btnSolve = findViewById<Button>(R.id.btn_solve)
         val btnReset = findViewById<Button>(R.id.btn_reset)
+        val btnExit = findViewById<Button>(R.id.btn_exit)
 
         btnSolve.setOnClickListener {
 
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
                 btnSolve.isEnabled = false
                 btnReset.isEnabled = false
+                btnExit.isEnabled = false
                 btnSolve.setTextColor(Color.parseColor("#000000"))
 
                 when (algorithmToApply) {
@@ -57,6 +59,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 btnSolve.setTextColor(Color.parseColor("#FFFFFF"))
                 btnReset.isEnabled = true
                 btnReset.setBackgroundResource(R.drawable.rounded_border_black)
+                btnExit.isEnabled = true
+                btnExit.setBackgroundResource(R.drawable.rounded_border_black)
+
             }
         }
 
@@ -64,6 +69,11 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             pathGrid.setSolving(false)
             finder.resetGrid()
             pathGrid.invalidate()
+        }
+
+        btnExit.setOnClickListener {
+            //finder.resetGrid()
+            finish()
         }
     }
 

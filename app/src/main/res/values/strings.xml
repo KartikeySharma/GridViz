@@ -6,6 +6,7 @@
     <string name="speed">Speed : </string>
     <string name="algorithm">Visualize :</string>
     <string name="solve">Start</string>
+    <string name="exit">Exit</string>
 
     <string-array name="speed_array">
         <item>Fast</item>
