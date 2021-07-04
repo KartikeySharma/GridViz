@@ -59,9 +59,7 @@ class BFS(rows: Int, cols: Int) {
                     }
                 }
             }
-            if (!flag) {
-                break
-            }
+            if (!flag) { break }
         }
     }
 

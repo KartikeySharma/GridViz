@@ -130,13 +130,8 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
             R.id.algo_spinner -> {
                 algorithmToApply = when (parent.selectedItem.toString()) {
-                    "BFS" -> {
-                        BFS_ALGO
-                    }
-                    else -> {
-                        DFS_ALGO
-                    }
-
+                    "BFS" -> { BFS_ALGO }
+                    else -> { DFS_ALGO }
                 }
             }
         }
@@ -144,7 +139,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
-
+        // do nothing
     }
 
     companion object {

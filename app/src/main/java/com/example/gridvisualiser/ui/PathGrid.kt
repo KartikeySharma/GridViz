@@ -31,6 +31,7 @@ class PathGrid(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
     private val finalPathColor: Int
     private val exploreHeadColor: Int
     private val exploreColor: Int
+
     private val exploreHeadPaintColor: Paint = Paint()
     private val pathPaintColor: Paint = Paint()
     private val obstaclePaintColor: Paint = Paint()
@@ -38,7 +39,6 @@ class PathGrid(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
     private val finalPathPaintColor: Paint = Paint()
     private val endPaintColor: Paint = Paint()
     private val explorePaintColor: Paint = Paint()
-
 
     private var cellSize: Int = 0
     private var finder = PathFinder()
@@ -123,12 +123,7 @@ class PathGrid(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
             (r * cellSize).toFloat()
         )
 
-        canvas.drawRoundRect(
-            rectF,  // rect
-            radius,  // rx
-            radius,  // ry
-            paintColor // Paint
-        )
+        canvas.drawRoundRect(rectF, radius, radius, paintColor)
         invalidate()
     }
 
@@ -142,6 +137,11 @@ class PathGrid(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
 
     fun getFinder() = this.finder
 
+    fun isValid(x: Int, y: Int): Boolean {
+        return x in 1..15 && y in 1..15//y>=1 && y<=15
+    }
+
+    // Create Grid
     private fun drawGrid(canvas: Canvas) {
         for (i in 1..15) {
             for (j in 1..15) {
@@ -153,16 +153,9 @@ class PathGrid(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
                 )
 
                 val cornersRadius = 15
-                canvas.drawRoundRect(
-                    rectF,  // rect
-                    cornersRadius.toFloat(),  // rx
-                    cornersRadius.toFloat(),  // ry
-                    pathPaintColor // Paint
-                )
-
+                canvas.drawRoundRect(rectF, cornersRadius.toFloat(), cornersRadius.toFloat(), pathPaintColor)
             }
         }
-
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -176,26 +169,19 @@ class PathGrid(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
                     val y = ceil(eventY / cellSize).toInt()
                     val x = ceil(eventX / cellSize).toInt()
 
-                    turn = if (x == finder.endX && y == finder.endY) {
-                        END_BLOCK_TURN
-                    } else if (x == finder.startX && y == finder.startY) {
-                        START_BLOCK_TURN
-                    } else {
-                        OBSTACLE_BLOCK_TURN
-                    }
-                    if (turn == OBSTACLE_BLOCK_TURN)
-                        moveCell(x, y, turn, 1)
-                    else
-                        moveCell(x, y, turn, 0)
+                    turn =  if (x == finder.endX && y == finder.endY) { END_BLOCK_TURN }
+                            else if (x == finder.startX && y == finder.startY) { START_BLOCK_TURN }
+                            else { OBSTACLE_BLOCK_TURN }
+
+                    if (turn == OBSTACLE_BLOCK_TURN) moveCell(x, y, turn, 1)
+                    else moveCell(x, y, turn, 0)
                 }
                 MotionEvent.ACTION_MOVE -> {
                     val y = ceil(eventY / cellSize).toInt()
                     val x = ceil(eventX / cellSize).toInt()
-//                    if (turn != OBSTACLE_BLOCK_TURN)
                     moveCell(x, y, turn, 0)
                 }
             }
-
             invalidate()
         }
         return true
@@ -205,27 +191,26 @@ class PathGrid(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
         isSolving = flag
     }
 
+    // Determine color and type
     private fun moveCell(x: Int, y: Int, turn: Int, firstTouch: Int) {
         if (turn == START_BLOCK_TURN) {
-            if (x >= 1 && y >= 1 && x <= 15 && y <= 15 &&
-                (finder.board[y][x] == EMPTY_CELL_CODE)
-            ) {
+            if (isValid(x,y) && (finder.board[y][x] == EMPTY_CELL_CODE)) {
                 finder.board[finder.startY][finder.startX] = EMPTY_CELL_CODE
                 finder.startX = x
                 finder.startY = y
                 finder.board[finder.startY][finder.startX] = START_CELL_CODE
             }
-        } else if (turn == END_BLOCK_TURN) {
-            if (x >= 1 && y >= 1 && x <= 15 && y <= 15 &&
-                (finder.board[y][x] == EMPTY_CELL_CODE)
-            ) {
+        }
+        else if (turn == END_BLOCK_TURN) {
+            if (isValid(x,y) && (finder.board[y][x] == EMPTY_CELL_CODE)) {
                 finder.board[finder.endY][finder.endX] = EMPTY_CELL_CODE
                 finder.endX = x
                 finder.endY = y
                 finder.board[finder.endY][finder.endX] = END_CELL_CODE
             }
-        } else {
-            if (x >= 1 && y >= 1 && x <= 15 && y <= 15 &&
+        }
+        else {
+            if (isValid(x,y) &&
                 !(x == finder.startX && y == finder.startY) &&
                 !(x == finder.endX && y == finder.endY) &&
                 (abs(x - finder.obstacleX) >= 1 || abs(y - finder.obstacleY) >= 1 || firstTouch == 1)
@@ -239,11 +224,9 @@ class PathGrid(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
                     finder.obstacleY = y
                     finder.board[y][x] = EMPTY_CELL_CODE
                 }
-
             }
         }
     }
-
 
     private fun colorObstacleCell(canvas: Canvas, r: Int, c: Int) {
         if (r != -1 && c != -1 && finder.board[r][c] == OBSTACLE_CELL_CODE) {
@@ -254,7 +237,7 @@ class PathGrid(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
                 (r * cellSize).toFloat()
             )
 
-            val cornersRadius = 0
+            val cornersRadius = 15
 
             canvas.drawRoundRect(
                 rectF,  // rect

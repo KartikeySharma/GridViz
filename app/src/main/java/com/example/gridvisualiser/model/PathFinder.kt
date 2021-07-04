@@ -12,16 +12,16 @@ class PathFinder {
     var obstacleX = 8
     var obstacleY = 8
 
-
     private val rows = 16
     private val cols = 16
 
     val board = Array(rows) { IntArray(cols) }
 
+    // Initial Configuration
     init {
-        board[1][1] = START_CELL_CODE //for Start
-        board[8][8] = OBSTACLE_CELL_CODE //for obstacle
-        board[15][15] = END_CELL_CODE //for End
+        board[1][1] = START_CELL_CODE       //for Start
+        board[8][8] = OBSTACLE_CELL_CODE    //for obstacle
+        board[15][15] = END_CELL_CODE   //for End
     }
 
     companion object {
@@ -49,10 +49,9 @@ class PathFinder {
         obstacleX = 8
         obstacleY = 8
 
-        board[1][1] = START_CELL_CODE //for Start
-        board[8][8] = OBSTACLE_CELL_CODE //for obstacle
-        board[15][15] = END_CELL_CODE //for End
-//        clearCells()
+        board[1][1] = START_CELL_CODE
+        board[8][8] = OBSTACLE_CELL_CODE
+        board[15][15] = END_CELL_CODE
     }
 
     suspend fun solveBFS(speed: Long): Boolean {
@@ -72,9 +71,7 @@ class PathFinder {
 
     }
 
-    /*
-    *this function traces back the path
-    */
+    // Find the Path from Dest to Source
     private suspend fun drawSolution(path: Array<CharArray>): Boolean {
         var i = endX
         var j = endY
@@ -83,40 +80,26 @@ class PathFinder {
         while (path[j][i] != 'O') {
             delay(20)
             when {
-                path[j][i] == 'U' -> {
-                    j--
-                }
-                path[j][i] == 'D' -> {
-                    j++
-                }
-                path[j][i] == 'L' -> {
-                    i--
-                }
-                else -> {
-                    i++
-                }
+                path[j][i] == 'L' -> { i-- }
+                path[j][i] == 'R' -> { i++ }
+                path[j][i] == 'U' -> { j-- }
+                path[j][i] == 'D' -> { j++ }
+                else -> {}
             }
             board[j][i] = FINAL_PATH_CELL_CODE
         }
         return true
     }
 
-
-    /*
-    * Clears the cell to it's default state
-    * */
+    // Go back to default configuration
     private fun clearCells() {
         for (i in 1..15) {
             for (j in 1..15) {
-                if (board[i][j] == EXPLORE_CELL_CODE ||
-                    board[i][j] == EXPLORE_HEAD_CELL_CODE ||
-                    board[i][j] == FINAL_PATH_CELL_CODE
-                ) {
+                if (board[i][j] == EXPLORE_CELL_CODE || board[i][j] == EXPLORE_HEAD_CELL_CODE || board[i][j] == FINAL_PATH_CELL_CODE) {
                     board[i][j] = EMPTY_CELL_CODE
                 }
             }
         }
     }
-
 
 }
