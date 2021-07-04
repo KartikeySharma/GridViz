@@ -152,7 +152,7 @@ class PathGrid(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
                     ((i * cellSize) - 5.toFloat())
                 )
 
-                val cornersRadius = 20
+                val cornersRadius = 15
                 canvas.drawRoundRect(
                     rectF,  // rect
                     cornersRadius.toFloat(),  // rx
