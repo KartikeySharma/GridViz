@@ -19,7 +19,7 @@ An App for visualising the famous DFS and BFS algorithms to find a path from the
 
 ## Some screenshots of the app
 <p float="left">
-  <img src="https://github.com/KartikeySharma/GridViz/blob/master/screenshots/1.jpeg" width="200" />
-  <img src="https://github.com/KartikeySharma/GridViz/blob/master/screenshots/2.jpeg" width="200" /> 
-  <img src="https://github.com/KartikeySharma/GridViz/blob/master/screenshots/3.jpeg" width="200" />
+  <img src="https://github.com/KartikeySharma/GridViz/blob/master/screenshots/1.jpeg" width="250" />
+  <img src="https://github.com/KartikeySharma/GridViz/blob/master/screenshots/2.jpeg" width="250" /> 
+  <img src="https://github.com/KartikeySharma/GridViz/blob/master/screenshots/3.jpeg" width="250" />
 </p>
