@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="100" height="100" src="https://github.com/KartikeySharma/GridViz/blob/master/app/src/main/res/mipmap-hdpi/ic_logo_grid.png">
+  <img width="200" height="200" src="https://github.com/KartikeySharma/GridViz/blob/master/screenshots/logo.jpeg">
 </p>
 
 # Grid Viz
